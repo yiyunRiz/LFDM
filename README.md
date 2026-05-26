@@ -14,12 +14,6 @@ steps. This design targets label-efficient fine-tuning: the expensive visual
 representation is learned from unlabeled imagery, while only a small decoder
 is optimized with semantic annotations.
 
-## Repository Status
-
-This repository contains the cleaned training and evaluation code for the
-published paper. Pretrained checkpoints are available from the link below.
-The code is released under the MIT License.
-
 ## Pretrained Checkpoints
 
 Download the pretrained diffusion and segmentation checkpoints from
