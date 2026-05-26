@@ -1,0 +1,81 @@
+{
+  "name": "lfdm-segmentation-gid5",
+  "phase": "train",
+  "gpu_ids": [0],
+  "path": {
+    "log": "logs",
+    "tb_logger": "tb_logger",
+    "results": "results",
+    "checkpoint": "checkpoint",
+    "resume_state": "checkpoints/diffusion_backbone"
+  },
+  "datasets": {
+    "train": {
+      "name": "GID-5",
+      "dataroot": "datasets/GID-5/train/images",
+      "labelroot": "datasets/GID-5/train/labels",
+      "label_offset": 1,
+      "resolution": 256,
+      "batch_size": 2,
+      "num_workers": 4,
+      "use_shuffle": true,
+      "data_len": -1
+    },
+    "val": {
+      "name": "GID-5",
+      "dataroot": "datasets/GID-5/val/images",
+      "labelroot": "datasets/GID-5/val/labels",
+      "label_offset": 1,
+      "resolution": 256,
+      "batch_size": 2,
+      "num_workers": 4,
+      "use_shuffle": false,
+      "data_len": -1
+    },
+    "test": {
+      "name": "GID-5",
+      "dataroot": "datasets/GID-5/test/images",
+      "labelroot": "datasets/GID-5/test/labels",
+      "label_offset": 1,
+      "resolution": 256,
+      "batch_size": 2,
+      "num_workers": 4,
+      "use_shuffle": false,
+      "data_len": -1
+    }
+  },
+  "model_seg": {
+    "feat_scales": [5, 8, 11, 14],
+    "out_channels": 6,
+    "output_size": 256,
+    "feat_type": "dec",
+    "t": [50, 100, 400],
+    "embedding_dim": 256,
+    "resume_state": null
+  },
+  "model": {
+    "which_model_G": "sr3",
+    "finetune_norm": false,
+    "unet": {
+      "in_channel": 3,
+      "out_channel": 3,
+      "inner_channel": 128,
+      "channel_multiplier": [1, 2, 4, 8, 8],
+      "attn_res": [16],
+      "res_blocks": 2,
+      "dropout": 0.2
+    },
+    "beta_schedule": {
+      "train": {"schedule": "linear", "n_timestep": 2000, "linear_start": 0.000001, "linear_end": 0.01},
+      "test": {"schedule": "linear", "n_timestep": 2000, "linear_start": 0.000001, "linear_end": 0.01}
+    },
+    "diffusion": {"image_size": 256, "channels": 3, "loss": "l2", "conditional": false}
+  },
+  "train": {
+    "n_epoch": 120,
+    "val_freq": 1,
+    "optimizer": {"type": "adam", "lr": 0.0001},
+    "sheduler": {"lr_policy": "linear", "n_steps": 3, "gamma": 0.1}
+  },
+  "wandb": {"project": "LFDM-segmentation"}
+}
