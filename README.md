@@ -17,8 +17,9 @@ is optimized with semantic annotations.
 ## Repository Status
 
 This repository contains the cleaned training and evaluation code for the
-published paper. Pretrained checkpoint download links and a repository license
-will be added when they are prepared for public distribution.
+published paper. Pretrained checkpoint download links will be added when they
+are prepared for public distribution. The code is released under the MIT
+License.
 
 ## Method Overview
 
