@@ -17,9 +17,16 @@ is optimized with semantic annotations.
 ## Repository Status
 
 This repository contains the cleaned training and evaluation code for the
-published paper. Pretrained checkpoint download links will be added when they
-are prepared for public distribution. The code is released under the MIT
-License.
+published paper. Pretrained checkpoints are available from the link below.
+The code is released under the MIT License.
+
+## Pretrained Checkpoints
+
+Download the pretrained diffusion and segmentation checkpoints from
+[OneDrive](https://1drv.ms/f/c/1712c9431d26a0f4/IgCe5qAOGUvVSbcVdptSOUVwAU0r2onF4vKvIWtkvFYz9wQ?e=bo8W3p).
+
+Place downloaded files under `checkpoints/`, or update the checkpoint paths
+in the selected configuration file to match your local layout.
 
 ## Method Overview
 
@@ -92,7 +99,8 @@ Semantic segmentation:
 Update dataset paths and `path.resume_state` before running an experiment.
 `path.resume_state` is the diffusion checkpoint prefix, without the
 `_gen.pth` suffix. For evaluation, set `model_seg.resume_state` to a trained
-segmentation checkpoint file.
+segmentation checkpoint file downloaded from the checkpoint release or
+produced by training.
 
 ## Training
 
